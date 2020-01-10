@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Unsafe Record" Height="650" Width="1000" Loaded="Window_Loaded">
+    <DockPanel LastChildFill="True" VerticalAlignment="Top">
+        <StackPanel x:Name="tbtMain" Height="47" Margin="0" VerticalAlignment="Center" DockPanel.Dock="Top" Orientation="Horizontal" >
+            <Button ToolTip="New" Content="New" x:Name="btnNew" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="30" Width="80"   Margin="5" Click="btnNew_Click" />
+            <Button x:Name="btnEdit" ToolTip="Edit" Content="Edit" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="30" Width="80" Click="btnEdit_Click"   />
+            <Button ToolTip="Delete" Content="Delete" x:Name="btnDelete" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="30" Width="80"   Margin="5" Click="btnDelete_Click" />
+            <Button x:Name="btnRefresh" ToolTip="Refresh" Content="Refresh" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="30" Width="80"   Margin="5" Click="btnRefresh_Click"   />
+            <Button x:Name="btnReport" ToolTip="Report" Content="Report" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="30" Width="80" Click="btnReport_Click"   />
+
+        </StackPanel>
+        <DataGrid x:Name="dgRecords"  ItemsSource="{Binding}" DockPanel.Dock="Top" IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="dgRecords_MouseDoubleClick" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Observer" Width="*" Binding="{Binding Observer}"/>
+                <DataGridTextColumn Header="Observee" Width="*" Binding="{Binding Observee}"/>
+                <DataGridTextColumn Header="Title" Width="*" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Task" Width="*" Binding="{Binding Detail}"/>
+                <DataGridTextColumn Header="Obsevertion Date" Width="*" Binding="{Binding ReportDate, StringFormat=\{0:dd-MM-yyyy \}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </DockPanel>
 </Window>
